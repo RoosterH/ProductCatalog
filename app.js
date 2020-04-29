@@ -1,4 +1,5 @@
 const express = require('express');
+// request body parser req.body.xxx
 const bodyParser = require('body-parser');
 const mongojs = require('mongojs');
 const cors = require('cors');
@@ -62,10 +63,11 @@ app.post('/api/v1/products/', cors(corsOptions), (req, res, next) => {
 // Update a product
 app.put('/api/v1/products/:id', cors(corsOptions), (req, res, next) => {
     // findAndModify https://docs.mongodb.com/manual/reference/command/findAndModify/
-    // query _id
+    // findAndModify({query: {_id: xxx}, update: {$set: {}}, new: true}, (err, doc) => {})
     // update certain fields using $set
     // new: true meaning if it's not found in db, we add it as a new product
-    db.products.findAndModify({query: {_id: mongojs.ObjectId(req.  params.id)},
+    db.products.findAndModify({   
+        query: {_id: mongojs.ObjectId(req.  params.id)},
         update:{
             $set:{
                 name: req.body.name,
@@ -73,7 +75,8 @@ app.put('/api/v1/products/:id', cors(corsOptions), (req, res, next) => {
                 price: req.body.price
             }
         }, 
-        new: true }, (err, doc) => {
+        new: true 
+        }, (err, doc) => {
             if (err) {
                 res.send(err);
                 return;
@@ -81,7 +84,7 @@ app.put('/api/v1/products/:id', cors(corsOptions), (req, res, next) => {
             console.log('Updating a product...');
             res.json(doc);
         }
-    )
+    );
 });
 
 // delete a product
