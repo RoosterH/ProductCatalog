@@ -1,0 +1,17 @@
+db.products.insert({
+    name: 'Amazon Fire Tablet',
+    category: 'Electronics',
+    model: 'B0794RHPZD',
+    price: 149.99,
+    image: 'https://images-na.ssl-images-amazon.com/images/I/61g9%2BJRbdDL._AC_SL1000_.jpg',
+    details: '1080p full HD display; 32 or 64 GB of internal storage (add up to 512 GB with microSD)'
+});
+
+db.products.insert({
+    name: 'Apple iphone XS',
+    category: 'Electronics',
+    model: 'B07HCZ6WGM',
+    price: 899,
+    image: 'https://images-na.ssl-images-amazon.com/images/I/71R46ju5GzL._AC_SL1500_.jpg',
+    details: 'This phone is locked to Simple Mobile from Tracfone, which means this device can only be used on the Simple Mobile wireless',
+});
